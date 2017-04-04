@@ -1,0 +1,97 @@
+buildscript {
+    repositories {
+        mavenCentral()		
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")	
+        classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.12.1")	
+    }
+}
+
+plugins {
+    id 'com.craigburke.client-dependencies' version '1.3.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'asset-pipeline'
+apply plugin: 'war'
+
+war {
+    baseName = 'web-app'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()	
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {    
+    compile("org.springframework.boot:spring-boot-starter-web"){
+      exclude module: "spring-boot-starter-tomcat"
+    }
+    
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+     
+	//manage and monitor application using HTTP endpoints
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    //store and retrieve data in a relational database.
+    /*compile("org.springframework.boot:spring-boot-starter-data-jpa")*/
+    
+    /*compile("mysql:mysql-connector-java")*/
+	
+	compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.7'
+		
+	compile("com.bertramlabs.plugins:asset-pipeline-spring-boot:2.12.1")
+		
+	assets 'com.craigburke.angular:angular-annotate-asset-pipeline:2.4.1'
+		
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+		
+    testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.11'
+}
+
+clientDependencies {
+
+	bower {
+        'jquery'('2.2.x', from:'dist') { 
+            include 'jquery.js'
+			include 'jquery.min.js'
+        }
+		'materialize'('0.97.x', from:'dist', into:'materialize'){
+			include "**"
+		}		
+		
+    }
+	
+	npm {
+		'angular'('1.5.x', into: 'angular') {
+			include 'angular.js' 
+			include 'angular.min.js'
+		}
+		'angular-resource'('1.5.x', into: 'angular') {
+			include 'angular-resource.js'
+			include 'angular-resource.min.js'
+		}
+		'angular-ui-router'('0.2.18', into: 'angular'){
+			include 'angular-ui-router.js'
+			include 'angular-ui-router.min.js'
+		}
+		'angular-animate'('1.5.x', into: 'angular') {
+			include 'angular-animate.js'
+			include 'angular-animate.min.js'
+		}
+	}
+}

@@ -1,0 +1,32 @@
+<div class="card">
+	<div class="card-content">
+		<div class="card-title">User Create</div>
+		<div class="row">
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<input ng-model="ctrl.user.firstname" id="firstname" type="text"
+							class="validate"> <label
+							ng-class="{'active':ctrl.user.firstname != null}" for="firstname">First
+							Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input ng-model="ctrl.user.lastname" id="lastname" type="text"
+							class="validate"> <label
+							ng-class="{'active':ctrl.user.lastname != null}" for="lastname">Last
+							Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div ng-class="ctrl.user.id? 'input-field col s6' : 'input-field col s4' ">
+						<input ng-model="ctrl.user.email" id="email" type="email"
+							class="validate"> <label
+							ng-class="{'active':ctrl.user.email != null}" for="email">Email</label>
+					</div>
+				</div>
+				<input class="btn" type="submit" ng-click="ctrl.save(ctrl.user)"
+					value="Save" />
+			</form>
+		</div>
+	</div>
+</div>
