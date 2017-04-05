@@ -3,6 +3,7 @@ package com.boot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,9 +26,18 @@ public class UserController {
 		return userService.GetAll();	
 	}
 	
-	@RequestMapping(value="/user/save", method = RequestMethod.POST)
+	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public User save(@RequestBody User user){
 		return userService.Save(user);		
 	}
 	
+	@RequestMapping(value="/delete/{id}", method = RequestMethod.DELETE)
+	public User Delete(@PathVariable int id){
+		return userService.Delete(id);
+	}
+	
+	@RequestMapping(value="/show/{id}", method = RequestMethod.GET)
+	public User Show(@PathVariable int id){
+		return userService.Get(id);
+	}
 }

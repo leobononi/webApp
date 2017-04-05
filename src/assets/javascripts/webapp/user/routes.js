@@ -15,6 +15,11 @@
 					templateUrl: '/assets/webapp/user/templates/create.html',
 					controller: "UserCreateController as ctrl"	
 				})
+				.state('user-edit', {
+					url: "/user/edit/:userId",
+					templateUrl: '/assets/webapp/user/templates/create.html',
+					controller: "UserCreateController as ctrl"	
+				})
 		});
 
 }());

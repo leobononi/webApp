@@ -1,6 +1,8 @@
 package com.boot.model;
 
-public class User{
+import java.io.Serializable;
+
+public class User implements Serializable{
 
 	private int id;
 	
@@ -9,13 +11,6 @@ public class User{
 	private String lastname;
 		
 	private String email;
-	
-	public User(int id, String firstName, String lastName, String email) {
-		this.id = id;
-		this.firstname = firstName;
-		this.lastname = lastName;
-		this.email = email;
-	}	
 	
 	public int getId() {
 		return id;
