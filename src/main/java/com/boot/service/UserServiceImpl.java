@@ -20,9 +20,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User Save(User user) {
-		user.setId(userList.size() + 1);
-		userList.add(user);
+	public User SaveOrUpdate(User user) {
+		if (user.getId() == 0){
+			user.setId(userList.size() + 1);
+			userList.add(user);
+			
+		}else{
+			userList.set(0, user);
+		}
 		return user;
 	}
 

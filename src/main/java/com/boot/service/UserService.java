@@ -7,7 +7,7 @@ import com.boot.model.User;
 public interface UserService {
 
 	List<User> GetAll();
-	User Save(User user);
+	User SaveOrUpdate(User user);
 	User Delete(int id);
 	User Get(int id);
 }

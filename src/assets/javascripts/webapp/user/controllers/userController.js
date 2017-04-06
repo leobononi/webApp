@@ -34,15 +34,22 @@
            })
         }  
         
-        self.save = function(user){  
-        	userService.save({action:'save',userId:null},user,function(res){            	
-                if(res.id){
-                    alert("Success");
-                    $location.path("/user/list");
-                }else{
-                    alert("Unknown error");
-                }
-            })
+        self.save = function(user){
+        	var response;
+        	if (!user.id){
+        		userService.save({action:'save',userId:null}, user, callback);
+        	}else{
+        		userService.update({action:'update',userId:null}, user, callback);
+        	}
+        }
+        
+        function callback (res){            	
+    		if(res.id){
+                alert("Success");
+                $location.path("/user/list");
+            }else{
+                alert("Unknown error");
+            }
         }
     }
 }());
