@@ -4,9 +4,9 @@
 
     angular
         .module("webapp.index")
-        .controller("IndexController", ['$rootScope',IndexController]);   
+        .controller("IndexController", [IndexController]);   
 
-    function IndexController($rootScope) {
+    function IndexController() {
         var vm = this;        
     }
 }());

@@ -3,11 +3,7 @@
 //= require routes
 //= require_tree services
 //= require_tree controllers
-//= require_tree directives
-//= require_tree domain
 
 (function() {
-
     angular.module("webapp.user", ["webapp.core"]);
-
 }());

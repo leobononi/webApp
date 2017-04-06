@@ -48,7 +48,7 @@
                 alert("Success");
                 $location.path("/user/list");
             }else{
-                alert("Unknown error");
+                alert("Campo " + res.field + ' ' + res.defaultMessage);
             }
         }
     }

@@ -1,17 +1,33 @@
 package com.boot.model;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
-public class User implements Serializable{
+import org.hibernate.validator.constraints.NotEmpty;
+
+public class User{
 
 	private int id;
 	
+	@NotNull
+	@NotEmpty
 	private String firstname;
 	
+	@NotNull
+	@NotEmpty
 	private String lastname;
 		
 	private String email;
 	
+	public User() {
+	}
+
+	public User(int id, String firstname, String lastname, String email) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+
 	public int getId() {
 		return id;
 	}

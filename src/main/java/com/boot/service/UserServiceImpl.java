@@ -1,9 +1,7 @@
 package com.boot.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -15,12 +13,12 @@ public class UserServiceImpl implements UserService {
 	private List<User> userList = new ArrayList<User>();
 	
 	@Override
-	public List<User> GetAll() {
+	public List<User> getAll() {
 		return userList;
 	}
 
 	@Override
-	public User SaveOrUpdate(User user) {
+	public User saveOrUpdate(User user) {
 		if (user.getId() == 0){
 			user.setId(userList.size() + 1);
 			userList.add(user);
@@ -32,7 +30,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User Delete(int id) {
+	public User delete(int id) {
 		  User user = userList.stream()
 				.filter((m) -> m.getId() == id)
 				.findFirst().get();
@@ -44,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User Get(int id) {
+	public User get(int id) {
 		return userList.stream()
 				.filter((m) -> m.getId() == id)
 				.findFirst().get();

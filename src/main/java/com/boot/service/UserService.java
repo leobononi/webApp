@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.boot.model.User;
 
-public interface UserService {
-
-	List<User> GetAll();
-	User SaveOrUpdate(User user);
-	User Delete(int id);
-	User Get(int id);
+public interface UserService extends BaseService<User> {
+	User saveOrUpdate(User user);
+	User delete(int id);
 }
